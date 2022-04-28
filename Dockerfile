@@ -23,7 +23,7 @@ RUN echo "Build date: `date`" >> KTH_OS
 
 # NodeJS information to file
 RUN echo "IMAGE INFORMATION" > KTH_NODEJS
-RUN echo "Based on:  node:16-alpine " >> KTH_NODEJS
+RUN echo "Based on:  node:18-alpine " >> KTH_NODEJS
 RUN echo "Build date: `date`" >> KTH_NODEJS
 RUN echo "Node: `node --version`" >> KTH_NODEJS
 RUN echo "NPM: `npm --version`" >> KTH_NODEJS
