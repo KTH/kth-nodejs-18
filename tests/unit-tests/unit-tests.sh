@@ -76,7 +76,7 @@ echo ""
 echo "Node JS"
 expectFileToContain "/KTH_NODEJS" "Build date:" "/KTH_NODEJS should contain the date when the images was built."
 expectFileToContain "/KTH_NODEJS" "Node: v18" "Image should have Node v18* installed."
-expectFileToContain "/KTH_NODEJS" 'NPM: 8.' "Image should have 'npm 8.*.*' installed."
+expectFileToContain "/KTH_NODEJS" 'NPM: 9.' "Image should have 'npm 9.*.*' installed."
 expectFileToContain "/KTH_NODEJS" "Yarn: 1." "Image should have 'Yarn 1.*.*' installed."
 expectFileToContain "/KTH_NODEJS" "merge-descriptors@" "Image should have global package 'merge-descriptors' installed."
 
