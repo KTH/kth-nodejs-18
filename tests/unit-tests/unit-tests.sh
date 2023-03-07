@@ -12,7 +12,7 @@ FAILED=""
 # Usage: expectFileToContain "Build date" "No build date pressent in /KTH_NODEJS"
 #
 expectFileToContain() {
-    FILE=$(cat /$1)
+    FILE=$(cat /"$1")
     PATTERN="$2"
     FAILURE_INFO="$3"
     
@@ -41,7 +41,7 @@ expectCommandToContain() {
     CMD="$1"
     PATTERN="$2"
     FAILURE_INFO="$3"
-    OUTPUT=`$CMD`
+    OUTPUT=$($CMD)
     
     if [[ "$OUTPUT" == *"$PATTERN"* ]]; then
         if [ -n "$FAILURE_INFO" ]; then
