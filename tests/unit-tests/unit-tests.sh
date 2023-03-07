@@ -17,14 +17,14 @@ expectFileToContain() {
     FAILURE_INFO="$3"
     
     if [[ "$FILE" == *"$PATTERN"* ]]; then
-        if [ ! -z "$FAILURE_INFO" ]; then
+        if [ -n "$FAILURE_INFO" ]; then
             passed "$FAILURE_INFO"
         else 
             passed "/KTH_NODEJS contains $PATTERN"
         fi
  
     else
-        if [ ! -z "$FAILURE_INFO" ]; then
+        if [ -n "$FAILURE_INFO" ]; then
             error "$FAILURE_INFO"
         fi
         info "/KTH_NODEJS does not contain pattern '$PATTERN'."
@@ -44,14 +44,14 @@ expectCommandToContain() {
     OUTPUT=`$CMD`
     
     if [[ "$OUTPUT" == *"$PATTERN"* ]]; then
-        if [ ! -z "$FAILURE_INFO" ]; then
+        if [ -n "$FAILURE_INFO" ]; then
             passed "$FAILURE_INFO"
         else 
             passed "'$CMD' contains '$PATTERN'"
         fi
  
     else
-        if [ ! -z "$FAILURE_INFO" ]; then
+        if [ -n "$FAILURE_INFO" ]; then
             error "$FAILURE_INFO"
         fi
         info "'$CMD' did not contain pattern '$PATTERN'."
