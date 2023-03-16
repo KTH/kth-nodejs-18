@@ -1,14 +1,12 @@
 name: Evolene CI
-
-on:  
+on:
   schedule:
     - cron: "0 0 * * *"
   push:
     paths-ignore:
-          - '*.md'
-          - '*.png'
+      - "*.md"
+      - "*.png"
   workflow_dispatch:
-
 jobs:
   Evolene:
     name: Continuous Integration
@@ -20,8 +18,7 @@ jobs:
         env:
           SLACK_CHANNELS: "#team-pipeline-build"
           BUILD_INFORMATION_OUTPUT_FILE: "/version.conf"
-          PUSH_PUBLIC: True
           SKIP_DRY_RUN: True
           EVOLENE_TEST_SECRETS: "${{secrets.EVOLENE_TEST_SECRETS}}"
-        run: |
+        run: |-
           ${{ secrets.EVOLENE_RUN_COMMAND }}
