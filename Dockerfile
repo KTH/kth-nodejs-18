@@ -7,6 +7,8 @@ RUN apk --no-cache add \
     git \
     bash
 
+RUN apk add --upgrade apk-tools && apk upgrade --available
+
 # npm uses SSH to get code from github.
 # We use https instead to skip the manual ssh fingerprint acceptance.
 RUN git config --global url."https://github.com/".insteadOf git@github.com: && \
