@@ -47,4 +47,4 @@ Build date: Thu Apr 28 13:55:45 UTC 2022
 
 ## Automated builds
 
-There is a schedule for nightly build. New builds are scheduled for 5 times a week.
+There is a schedule for nightly build. New builds are scheduled for 5 times a week. Builds are also automated to trigger when the code in main branch is updated,
