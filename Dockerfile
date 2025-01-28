@@ -17,7 +17,10 @@ RUN git config --global url."https://github.com/".insteadOf git@github.com: && \
     
 # Install merge-descriptors
 RUN npm install --global merge-descriptors
-    
+
+# update globals
+RUN npm update --global
+
 # OS information to file
 RUN echo "IMAGE INFORMATION" > KTH_OS
 RUN echo "Alpine version: `cat /etc/alpine-release `" >> KTH_OS
