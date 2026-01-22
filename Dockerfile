@@ -39,7 +39,7 @@ RUN echo "`npm list -g --depth 0`" >> KTH_NODEJS
 
 # Force upgrade specific vulnerable packages globally (temporary solution before we move away from node18)
 # glob@10.4.5 and tar6.2.1 have security issues
-RUN npm install -g glob@10.5.0 tar@7.5.4
+RUN npm install glob@10.5.0 tar@7.5.3 --prefix /usr/local/lib/node_modules/npm
 
 # Finally output for CI logs.
 RUN cat KTH_OS
