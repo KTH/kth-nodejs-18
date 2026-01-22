@@ -37,9 +37,23 @@ RUN echo "" >> KTH_NODEJS
 RUN echo "--- Default global packages ---" >> KTH_NODEJS
 RUN echo "`npm list -g --depth 0`" >> KTH_NODEJS
 
+
 # Force upgrade specific vulnerable packages globally (temporary solution before we move away from node18)
 # glob@10.4.5 and tar6.2.1 have security issues
-RUN npm install glob@10.5.0 tar@7.5.3 --prefix /usr/local/lib/node_modules/npm
+
+# 1. Remove npm’s bundled vulnerable tar + glob
+RUN rm -rf /usr/local/lib/node_modules/npm/node_modules/tar \
+    && rm -rf /usr/local/lib/node_modules/npm/node_modules/glob
+
+# 2. Download patched versions and unpack them directly into npm’s internal node_modules
+RUN mkdir -p /tmp/patch \
+    && cd /tmp/patch \
+    && npm pack tar@7.5.4 \
+    && npm pack glob@10.5.0 \
+    && tar -xzf tar-*.tgz -C /usr/local/lib/node_modules/npm/node_modules --strip-components=1 package \
+    && tar -xzf glob-*.tgz -C /usr/local/lib/node_modules/npm/node_modules --strip-components=1 package \
+    && rm -rf /tmp/patch
+
 
 # Finally output for CI logs.
 RUN cat KTH_OS
